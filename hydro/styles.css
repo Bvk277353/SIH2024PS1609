@@ -1,0 +1,83 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f8fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #1e90ff, #0073e6);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Main content */
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Form styling */
+label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+    font-size: 16px;
+}
+
+input[type="number"],
+select,
+button {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+button {
+    background-color: #1e90ff;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #0073e6;
+}
+
+/* Suggestions Section */
+#output {
+    padding: 15px;
+    background-color: #e7f3fe;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
+}
+
+/* Footer */
+footer {
+    background-color: #1e90ff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: bold;
+}

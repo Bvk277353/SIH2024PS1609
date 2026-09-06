@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Advisory</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="Farmers Advisory" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="less-water-crops.html">Less Water Crops</a></li>
+                <li><a href="more-water-crops.html">More Water Crops</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <h1>Crops Advisory</h1>
+        <p>Explore crop information and water-saving technologies.</p>
+    </section>
+
+    <!-- Crop Information Section -->
+    <section class="crop-section">
+        <div class="container">
+            <h2>Crops</h2>
+            <p>Select a crop to view detailed information about water requirements, growing conditions, and conservation methods.</p>
+            <div class="crop-gallery">
+                <div class="crop-card">
+                    <img src="wheat.jpg" alt="Wheat" onclick="showCropDetails('wheat')">
+                    <h3>Wheat</h3>
+                </div>
+                <div class="crop-card">
+                    <img src="millet.jpg" alt="Millet" onclick="showCropDetails('millet')">
+                    <h3>Millet</h3>
+                </div>
+                <div class="crop-card">
+                    <img src="rice.jpg" alt="Rice" onclick="showCropDetails('rice')">
+                    <h3>Rice</h3>
+                </div>
+                <!-- Add more crop cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Crop Details Modal -->
+    <div id="cropDetails" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCropDetails()">&times;</span>
+            <div id="cropDetailsContent">
+                <!-- Dynamic content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Farmers Advisory. All rights reserved.</p>
+    </footer>
+
+    <script src="script1.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+// App.js
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col, Card, Button, Navbar, Nav, Alert } from "react-bootstrap";
+
+const App = () => {
+  const conservationMethods = [
+    {
+      id: 1,
+      title: "Rainwater Harvesting",
+      imgSrc: "rainwater_harvesting_karnataka.jpg",
+      description:
+        "Rainwater harvesting is widely adopted in Karnataka, especially in Bangalore, to address water scarcity. This method involves collecting and storing rainwater for household, industrial, and agricultural purposes. Additionally, community rainwater harvesting systems are being implemented to recharge groundwater and promote sustainable water usage.",
+      reference: "https://bwssb.gov.in",
+    },
+    {
+      id: 2,
+      title: "Wastewater Recycling",
+      imgSrc: "wastewater_recycling_karnataka.jpg",
+      description:
+        "Advanced wastewater treatment plants in urban areas purify used water, making it suitable for non-potable uses such as irrigation, landscaping, and industrial applications. This method reduces water wastage and ensures optimal water resource utilization.",
+      reference: "https://cpcb.nic.in",
+    },
+    {
+      id: 3,
+      title: "Drip Irrigation",
+      imgSrc: "drip_irrigation_karnataka.jpg",
+      description:
+        "In Karnataka's agricultural belts, drip irrigation ensures water is delivered directly to the roots of crops, reducing evaporation and runoff. This method enhances crop yield and conserves water, making it a preferred technique for farmers.",
+      reference: "https://pmksy.gov.in",
+    },
+  ];
+
+  return (
+    <>
+      {/* Header */}
+      <Navbar bg="primary" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand href="#">Water Conservation Karnataka</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link href="#about">About</Nav.Link>
+              <Nav.Link href="#methods">Methods</Nav.Link>
+              <Nav.Link href="#video">Video</Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* Main Content */}
+      <Container className="mt-4">
+        <Alert variant="info" className="text-center">
+          <strong>Discover innovative strategies for water conservation in Karnataka!</strong>
+        </Alert>
+
+        <section id="methods" className="my-5">
+          <h2 className="text-primary text-center mb-4">Water Conservation Methods</h2>
+          <Row>
+            {conservationMethods.map((method) => (
+              <Col md={4} className="mb-4" key={method.id}>
+                <Card className="shadow-sm">
+                  <Card.Img
+                    variant="top"
+                    src={method.imgSrc}
+                    alt={method.title}
+                    style={{ height: "200px", objectFit: "cover" }}
+                  />
+                  <Card.Body>
+                    <Card.Title className="text-primary">{method.title}</Card.Title>
+                    <Card.Text>{method.description}</Card.Text>
+                    <Button
+                      variant="link"
+                      href={method.reference}
+                      target="_blank"
+                      className="text-decoration-none text-primary"
+                    >
+                      Learn More
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </section>
+
+        <section id="video" className="my-5 text-center">
+          <h2 className="text-primary mb-4">Watch the Video</h2>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/I4V0QiyKAYs"
+            title="YouTube video player"
+            frameBorder="0"
+            allowFullScreen
+            style={{ border: "5px solid #00509e", borderRadius: "10px" }}
+          ></iframe>
+        </section>
+      </Container>
+
+      {/* Footer */}
+      <footer className="bg-primary text-white text-center py-3">
+        <p className="mb-1">© 2024 Karnataka Water Conservation Initiative. All rights reserved.</p>
+        <p>
+          Visit us at{" "}
+          <a href="https://www.karnataka.gov.in" target="_blank" rel="noopener noreferrer" className="text-warning">
+            karnataka.gov.in
+          </a>
+        </p>
+      </footer>
+    </>
+  );
+};
+
+export default App;

@@ -1,0 +1,199 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Water Conservation – Singapore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6f7ff;
+            color: #003366;
+        }
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        .section-title {
+            color: #004080;
+            border-bottom: 2px solid #004080;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .content {
+            line-height: 1.6;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        table, th, td {
+            border: 1px solid #004080;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #004080;
+            color: white;
+        }
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .reference {
+            font-style: italic;
+            font-size: 14px;
+            color: #0066cc;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .video-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+        }
+        /* Graph container styling */
+        .graph-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .graph-description {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #003366;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Urban Water Conservation – Singapore</h1>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Problem</h2>
+        <div class="image-container">
+            <img src="sn.jpg" style="width: 100%; max-width: 400px; height: auto;" class="content" />
+        </div>
+        <p>Singapore faces a critical challenge due to its limited freshwater sources and a rapidly growing population. With increasing urbanization, the demand for water continues to rise, putting immense pressure on existing water resources. Ensuring water security for the nation requires innovative and sustainable solutions.</p>
+
+        <h2 class="section-title">Solution</h2>
+        <p>To address this challenge, Singapore implemented NEWater, an advanced high-tech water recycling system that transforms treated wastewater into potable water. This state-of-the-art system uses multi-stage filtration and ultraviolet disinfection processes to ensure the water is clean, safe, and suitable for various uses, including drinking. By integrating NEWater into its water supply strategy, Singapore has significantly enhanced its water resilience.</p>
+
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/5BGUT7BjPl0?si=vqP6yoT7QRjLpPDI" title="NEWater Singapore" allowfullscreen></iframe>
+            <p class="content">Video: Overview of NEWater technology in Singapore</p>
+        </div>
+
+        <h2 class="section-title">Outcome</h2>
+        <p>NEWater currently meets 40% of Singapore's water needs, ensuring a sustainable and secure water supply for the nation. This initiative has reduced Singapore's dependence on imported water and mitigated the risks associated with water scarcity. NEWater has become a global benchmark for urban water management and a testament to the potential of technology in addressing environmental challenges.</p>
+
+        <div class="table-container">
+            <h2 class="section-title">Key Metrics</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Before NEWater</th>
+                        <th>After NEWater</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dependence on Imported Water</td>
+                        <td>80%</td>
+                        <td>40%</td>
+                    </tr>
+                    <tr>
+                        <td>Local Water Sources Contribution</td>
+                        <td>20%</td>
+                        <td>60%</td>
+                    </tr>
+                    <tr>
+                        <td>Water Security</td>
+                        <td>Low</td>
+                        <td>High</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">Graph: Water Security Impact</h2>
+        <div class="graph-container">
+            <canvas id="waterSecurityChart"></canvas>
+            <p class="graph-description">This graph illustrates the shift in water security and dependency on imported water before and after the implementation of NEWater in Singapore.</p>
+        </div>
+
+        <h2 class="section-title">Key Takeaway</h2>
+        <p>Singapore's success with NEWater demonstrates that urban areas can effectively tackle water scarcity through advanced water recycling and reuse systems. This approach not only addresses immediate water needs but also ensures long-term sustainability and resilience for future generations.</p>
+
+        <p class="reference">Reference: Singapore's National Water Agency, 2024</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Urban Water Conservation Initiative. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Graph code using Chart.js
+        var ctx = document.getElementById('waterSecurityChart').getContext('2d');
+        var waterSecurityChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Before NEWater', 'After NEWater'],
+                datasets: [{
+                    label: 'Dependence on Imported Water (%)',
+                    data: [80, 40],
+                    backgroundColor: '#004080',
+                    borderColor: '#003366',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

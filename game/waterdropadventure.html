@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Drop Adventure</title>
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #00b4d8, #03045e);
+            overflow: hidden;
+            color: white;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: linear-gradient(to bottom, #caf0f8, #90e0ef);
+            border: 2px solid #0077b6;
+        }
+
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
+        }
+
+        #game-over, #instructions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: none;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #game-over {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        #game-over h1, #instructions h1 {
+            font-size: 36px;
+            margin: 0 0 10px;
+        }
+
+        #game-over button, #instructions button {
+            padding: 10px 20px;
+            background: #0077b6;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #game-over button:hover, #instructions button:hover {
+            background: #023e8a;
+        }
+
+        #instructions {
+            background: linear-gradient(to bottom right, #0077b6, #00b4d8);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #instructions p {
+            margin: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="score">Score: 0</div>
+
+    <!-- Game Over Panel -->
+    <div id="game-over">
+        <h1>Game Over</h1>
+        <p>Your final score: <span id="final-score">0</span></p>
+        <button id="restart">Restart</button>
+    </div>
+
+    <!-- Instructions Panel -->
+    <div id="instructions">
+        <h1>Water Drop Adventure</h1>
+        <p>💧 Control the water droplet with <strong>Arrow Keys</strong>.</p>
+        <p>🌟 Avoid red blocks and collect yellow tokens for points.</p>
+        <button id="start-game">Start Game</button>
+    </div>
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <script>
+        // Canvas and context setup
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Game variables
+        const waterDrop = {
+            x: 400,
+            y: 500,
+            radius: 20,
+            color: '#0077b6',
+            speed: 100,//Faster speed for left and right movement
+        };
+
+        let obstacles = [];
+        let tokens = [];
+        let score = 0;
+        let gameInterval;
+        let isGameOver = false;
+
+        // Panels
+        const instructions = document.getElementById('instructions');
+        const gameOverPanel = document.getElementById('game-over');
+        const finalScore = document.getElementById('final-score');
+        const scoreDisplay = document.getElementById('score');
+        const restartButton = document.getElementById('restart');
+        const startButton = document.getElementById('start-game');
+
+        // Utility function to create random positions
+        function getRandomPosition(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Create new obstacle
+        function createObstacle() {
+            const size = getRandomPosition(20, 50);
+            const obstacle = {
+                x: getRandomPosition(0, canvas.width - size),
+                y: -size,
+                width: size,
+                height: size,
+                speed: getRandomPosition(3, 6),
+                color: 'red',
+            };
+            obstacles.push(obstacle);
+        }
+
+        // Create water tokens
+        function createToken() {
+            const token = {
+                x: getRandomPosition(0, canvas.width - 20),
+                y: -20,
+                radius: 10,
+                speed: getRandomPosition(3, 6),
+                color: 'yellow',
+            };
+            tokens.push(token);
+        }
+
+        // Draw the water drop
+        function drawWaterDrop() {
+            ctx.beginPath();
+            ctx.arc(waterDrop.x, waterDrop.y, waterDrop.radius, 0, Math.PI * 2);
+            ctx.fillStyle = waterDrop.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Draw obstacles
+        function drawObstacles() {
+            obstacles.forEach((obstacle) => {
+                ctx.fillStyle = obstacle.color;
+                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+                obstacle.y += obstacle.speed;
+
+                // Check for collision
+                if (
+                    waterDrop.x + waterDrop.radius > obstacle.x &&
+                    waterDrop.x - waterDrop.radius < obstacle.x + obstacle.width &&
+                    waterDrop.y + waterDrop.radius > obstacle.y &&
+                    waterDrop.y - waterDrop.radius < obstacle.y + obstacle.height
+                ) {
+                    endGame();
+                }
+            });
+
+            // Remove off-screen obstacles
+            obstacles = obstacles.filter((obstacle) => obstacle.y < canvas.height);
+        }
+
+        // Draw tokens
+        function drawTokens() {
+            tokens.forEach((token, index) => {
+                ctx.beginPath();
+                ctx.arc(token.x, token.y, token.radius, 0, Math.PI * 2);
+                ctx.fillStyle = token.color;
+                ctx.fill();
+                ctx.closePath();
+                token.y += token.speed;
+
+                // Check for collection
+                if (
+                    waterDrop.x + waterDrop.radius > token.x - token.radius &&
+                    waterDrop.x - waterDrop.radius < token.x + token.radius &&
+                    waterDrop.y + waterDrop.radius > token.y - token.radius &&
+                    waterDrop.y - waterDrop.radius < token.y + token.radius
+                ) {
+                    score += 10;
+                    tokens.splice(index, 1); // Remove token
+                }
+            });
+
+            // Remove off-screen tokens
+            tokens = tokens.filter((token) => token.y < canvas.height);
+        }
+
+        // End the game
+        function endGame() {
+            clearInterval(gameInterval);
+            isGameOver = true;
+            finalScore.textContent = score;
+            gameOverPanel.style.display = 'block';
+        }
+
+        // Restart the game
+        restartButton.addEventListener('click', () => {
+            score = 0;
+            obstacles = [];
+            tokens = [];
+            isGameOver = false;
+            gameOverPanel.style.display = 'none';
+            startGame();
+        });
+
+        // Start game logic
+        function startGame() {
+            scoreDisplay.textContent = `Score: ${score}`;
+            gameInterval = setInterval(() => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawWaterDrop();
+                drawObstacles();
+                drawTokens();
+                scoreDisplay.textContent = `Score: ${score}`;
+
+                // Add obstacles and tokens at intervals
+                if (Math.random() < 0.03) createObstacle();
+                if (Math.random() < 0.02) createToken();
+            }, 20);
+        }
+
+        // Show instructions
+        startButton.addEventListener('click', () => {
+            instructions.style.display = 'none';
+            startGame();
+        });
+
+        // Initialize movement
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && waterDrop.x - waterDrop.radius > 0) {
+                waterDrop.x -= waterDrop.speed;
+            } else if (
+                e.key === 'ArrowRight' &&
+                waterDrop.x + waterDrop.radius < canvas.width
+            ) {
+                waterDrop.x += waterDrop.speed;
+            }
+        });
+
+        // Show instructions on load
+        instructions.style.display = 'block';
+    </script>
+</body>
+</html>

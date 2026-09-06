@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydro Hub - Hydroponics & Water Quality Check</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Hydro Hub - Hydroponics & Water Quality Control</h1>
+    </header>
+
+    <main>
+        <!-- User Input Form Section -->
+        <section id="input-section">
+            <h2>Input Your Hydroponics & Water Data</h2>
+
+            <form id="inputForm">
+                
+                <!-- Water Quality Inputs -->
+                <label for="ph">pH Level</label>
+                <input type="number" id="ph" name="ph" step="0.1" placeholder="e.g., 6.0" required>
+
+                <label for="tds">TDS (ppm)</label>
+                <input type="number" id="tds" name="tds" placeholder="e.g., 700" required>
+
+                <label for="temp">Water Temperature (°C)</label>
+                <input type="number" id="temp" name="temp" placeholder="e.g., 22" required>
+
+                <label for="contaminants">Contaminant Levels (ppm)</label>
+                <input type="number" id="contaminants" name="contaminants" placeholder="e.g., 30" required>
+
+                <!-- Hydroponics Inputs -->
+                <label for="plantType">Type of Plants</label>
+                <select id="plantType" name="plantType">
+                    <option value="lettuce">Lettuce</option>
+                    <option value="tomato">Tomato</option>
+                    <option value="strawberry">Strawberry</option>
+                    <option value="herbs">Herbs</option>
+                </select>
+
+                <label for="nutrientConcentration">Nutrient Concentration (ppm)</label>
+                <input type="number" id="nutrientConcentration" name="nutrientConcentration" placeholder="e.g., 900">
+
+                <button type="button" onclick="generateSuggestions()">Submit</button>
+            </form>
+        </section>
+
+        <!-- Suggestions Section -->
+        <section id="suggestions-section">
+            <h2>Suggestions</h2>
+            <div id="output">Suggestions will appear here...</div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Hydro Hub - Sustainable Hydroponic Solutions</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

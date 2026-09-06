@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Save Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .game-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #00796b;
+        }
+
+        .scenario {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .choices button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #009688;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .choices button:hover {
+            background-color: #004d40;
+        }
+
+        .result {
+            font-size: 20px;
+            color: #004d40;
+            margin-top: 20px;
+        }
+
+        .score {
+            font-size: 22px;
+            margin-top: 20px;
+            color: #00796b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-container">
+        <h1>Water Save Challenge</h1>
+        <p class="scenario">
+            Welcome to the Water Save Challenge! Make choices to conserve water and increase your score.
+        </p>
+        <div class="choices">
+            <button onclick="handleChoice(true)">Turn off the tap while brushing</button>
+            <button onclick="handleChoice(false)">Let the tap run while brushing</button>
+        </div>
+        <p class="result" id="result"></p>
+        <p class="score" id="score">Score: 0</p>
+        <button onclick="nextScenario()" id="next-btn" style="display: none;">Next Scenario</button>
+    </div>
+
+    <script>
+        // Initial game state
+        let score = 0;
+        let currentScenario = 0;
+
+        const scenarios = [
+            {
+                question: "You’re brushing your teeth. What do you do?",
+                choices: [
+                    { text: "Turn off the tap while brushing", correct: true },
+                    { text: "Let the tap run while brushing", correct: false }
+                ]
+            },
+            {
+                question: "You need to wash vegetables. What do you do?",
+                choices: [
+                    { text: "Use a bowl to wash them", correct: true },
+                    { text: "Wash them under a running tap", correct: false }
+                ]
+            },
+            {
+                question: "It rained heavily last night. What do you do?",
+                choices: [
+                    { text: "Collect rainwater for gardening", correct: true },
+                    { text: "Let the rainwater go unused", correct: false }
+                ]
+            }
+        ];
+
+        // Function to handle the player's choice
+        function handleChoice(isCorrect) {
+            const resultElement = document.getElementById("result");
+            if (isCorrect) {
+                score += 10;
+                resultElement.textContent = "Great choice! You saved water!";
+            } else {
+                resultElement.textContent = "Oops! That wastes water. Try again next time.";
+            }
+            document.getElementById("score").textContent = `Score: ${score}`;
+            document.getElementById("next-btn").style.display = "inline-block";
+            document.querySelectorAll(".choices button").forEach(button => button.disabled = true);
+        }
+
+        // Function to load the next scenario
+        function nextScenario() {
+            currentScenario++;
+            if (currentScenario < scenarios.length) {
+                loadScenario();
+            } else {
+                document.querySelector(".scenario").textContent = "Game Over! Thanks for playing.";
+                document.querySelector(".choices").style.display = "none";
+                document.getElementById("next-btn").style.display = "none";
+            }
+        }
+
+        // Function to load a scenario
+        function loadScenario() {
+            const scenario = scenarios[currentScenario];
+            document.querySelector(".scenario").textContent = scenario.question;
+
+            const choicesContainer = document.querySelector(".choices");
+            choicesContainer.innerHTML = "";
+            scenario.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.textContent = choice.text;
+                button.onclick = () => handleChoice(choice.correct);
+                choicesContainer.appendChild(button);
+            });
+
+            document.getElementById("result").textContent = "";
+            document.getElementById("next-btn").style.display = "none";
+        }
+
+        // Initialize the game
+        loadScenario();
+    </script>
+</body>
+
+</html>

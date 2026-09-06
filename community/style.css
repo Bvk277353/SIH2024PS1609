@@ -1,0 +1,180 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #0077b6;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+header .logo h1 {
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Feed Section Styles */
+main {
+    display: flex;
+    margin: 20px;
+}
+
+.feed {
+    width: 70%;
+}
+
+.post-form {
+    margin-bottom: 20px;
+}
+
+.post-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.post-form input {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    cursor: pointer;
+}
+
+button {
+    background-color: #0077b6;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #005f8c;
+}
+
+#posts-container {
+    margin-top: 20px;
+}
+
+.post {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.cardp-3 img {
+    width:  100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 2px solid #2196f3;
+    object-fit: cover;
+}
+  
+
+.username {
+    font-weight: bold;
+}
+
+.post-content {
+    margin-top: 10px;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.description {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #555;
+}
+
+.post-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.comments {
+    margin-top: 10px;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Sidebar Styles */
+aside {
+    width: 30%;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.polls {
+    margin-bottom: 30px;
+}
+
+.polls label {
+    font-weight: bold;
+}
+
+.polls input {
+    margin-right: 10px;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #0077b6;
+    color: white;
+    margin-top: 30px;
+}

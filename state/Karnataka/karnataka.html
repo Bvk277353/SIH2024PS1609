@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Conservation Methods in Karnataka</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #00509e;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        .content-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .content-row img {
+            width: 100%;
+            max-width: 450px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .content-row:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .content-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .content-text {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .video-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .video-container iframe {
+            border: 5px solid #00509e;
+            border-radius: 10px;
+            max-width: 100%;
+            animation: fadeIn 1.5s ease;
+        }
+
+        footer {
+            background-color: #003f7d;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .content-row {
+                flex-direction: column !important;
+            }
+
+            .content-row img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="animate__animated animate__fadeInDown">Water Conservation Methods in Karnataka</h1>
+        <p class="lead animate__animated animate__fadeInUp">Innovative Strategies for Sustainable Water Management</p>
+    </header>
+
+    <div class="container my-5">
+        <!-- Article 1: Rainwater Harvesting -->
+        <div class="content-row">
+            <img src="rainwater_harvesting_karnataka.jpg" alt="Rainwater Harvesting">
+            <div class="content-text">
+                <h2 class="text-primary">1. Rainwater Harvesting</h2>
+                <p>Rainwater harvesting is a widely implemented solution in Karnataka to combat water shortages. It involves collecting and storing rainwater from rooftops, terraces, or specially designed catchment areas. This stored water can be used for domestic and agricultural needs, reducing dependency on traditional water sources. In urban areas like Bangalore, rainwater harvesting has been mandated in many localities to recharge groundwater levels and prevent urban flooding.</p>
+                <p>Benefits of this method include reducing water bills, minimizing soil erosion, and creating a sustainable water source, especially in drought-prone regions.</p>
+                <p><strong>Reference:</strong> <a href="https://bwssb.gov.in" target="_blank">Bangalore Water Supply and Sewerage Board</a></p>
+            </div>
+        </div>
+
+        <!-- Article 2: Wastewater Recycling -->
+        <div class="content-row">
+            <img src="wastewater_recycling_karnataka.jpg" alt="Wastewater Recycling">
+            <div class="content-text">
+                <h2 class="text-primary">2. Wastewater Recycling</h2>
+                <p>Wastewater recycling is a sustainable practice that treats and repurposes wastewater for secondary uses. Karnataka, especially Bangalore, has pioneered advanced wastewater treatment plants that process sewage and industrial waste to make it suitable for irrigation, cooling in power plants, and urban landscaping.</p>
+                <p>This approach significantly reduces the demand for freshwater resources while helping industries comply with environmental regulations. It also helps maintain ecological balance by limiting the release of untreated water into rivers and lakes.</p>
+                <p><strong>Reference:</strong> <a href="https://cpcb.nic.in" target="_blank">Central Pollution Control Board</a></p>
+            </div>
+        </div>
+
+        <!-- Article 3: Drip Irrigation -->
+        <div class="content-row">
+            <img src="drip_irrigation_karnataka.jpg" alt="Drip Irrigation">
+            <div class="content-text">
+                <h2 class="text-primary">3. Drip Irrigation</h2>
+                <p>Drip irrigation is a water-efficient technique that delivers water directly to the root zones of crops. This precision reduces water wastage due to evaporation and runoff. Farmers in Karnataka, particularly in regions with limited water availability, have adopted this method to maximize yield while conserving resources.</p>
+                <p>Drip irrigation is especially beneficial for crops like sugarcane, tomatoes, and grapes, which require controlled watering. The state government offers subsidies to promote the adoption of this method under schemes such as the Pradhan Mantri Krishi Sinchayee Yojana (PMKSY).</p>
+                <p><strong>Reference:</strong> <a href="https://pmksy.gov.in" target="_blank">Pradhan Mantri Krishi Sinchayee Yojana</a></p>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-container">
+            <h3 class="text-primary animate__animated animate__fadeInUp">Watch the Video on Water Conservation Methods</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/I4V0QiyKAYs?si=Iz86kJ9KFODYp_uo" 
+                    title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Karnataka Water Conservation Initiative. All rights reserved.</p>
+        <p>Learn more at <a href="https://www.karnataka.gov.in" target="_blank">karnataka.gov.in</a></p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

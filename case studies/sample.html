@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Water Conservation Case Studies</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .intro {
+            padding: 20px;
+            background-color: #66ccff;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #003366;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .content img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1.1em;
+        }
+
+        /* Ensure the content is responsive */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content img {
+                width: 80%;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Search Bar Styling */
+        .search-container {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .suggestions {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            width: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .suggestions div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .suggestions div:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Water Conservation Case Studies</h1>
+            <p>Innovative Solutions for Water Scarcity in Agriculture, Industry, and Urban Areas</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Search Section -->
+            <div class="search-container">
+                <input type="text" class="search-bar" id="search" placeholder="Search Water Conservation Techniques...">
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+
+            <!-- Introduction Section -->
+            <section class="intro">
+                <p>Water conservation is essential for tackling the global water scarcity crisis. This collection of case studies highlights successful water-saving initiatives implemented across various sectors: agriculture, industries, and urban areas. These real-world examples demonstrate how technology and strategic practices can make a significant impact on sustainable water use.</p>
+            </section>
+          
+                <!-- Case Study 1 -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <img src="images/israel-irrigation.jpg" alt="Drip Irrigation in Israel" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <a href='Israel-Water-Efficient Irrigation Systems in Agriculture.html'> <h2>Water-Efficient Irrigation Systems in Agriculture - Israel</h2></a>
+                        <p><strong>Location:</strong> Israel (Agriculture Sector)</p>
+                        <p><strong>Problem:</strong> Water scarcity and drought in arid regions impacting crop yields.</p>
+                        <p><strong>Solution:</strong> Israel pioneered <strong>drip irrigation</strong> technology, which delivers water directly to plant roots with minimal evaporation and runoff.</p>
+                        <p><strong>Outcome:</strong> Drip irrigation reduced water usage by <strong>30-50%</strong> while maintaining crop yield.</p>
+                        <p><strong>Key Takeaway:</strong> Advanced irrigation technologies are essential for improving water use efficiency in agriculture.</p>
+                    </div>
+                </div>
+    
+                <!-- Case Study 2 -->
+                <div class="row mb-4">
+                    <div class="col-md-6 order-md-2">
+                        <img src="images/in.jpg" alt="System of Rice Intensification (SRI) in India" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <a href='System of Rice Intensification (SRI) in India.html'><h2>System of Rice Intensification (SRI) in India
+                        </h2></a>
+                        <p><strong>Location:</strong> Punjab, India (Agriculture Sector)</p>
+                        <p><strong>Problem:</strong> Excessive water consumption in traditional rice cultivation.</p>
+                        <p><strong>Solution:</strong> Introduction of <strong>Alternate Wetting and Drying (AWD)</strong> technique.</p>
+                        <p><strong>Outcome:</strong> Water usage in rice cultivation dropped by <strong>30-40%</strong>, and soil health improved.</p>
+                        <p><strong>Key Takeaway:</strong> Simple changes in agricultural practices can significantly reduce water consumption.</p>
+                    </div>
+                </div>
+    
+                <!-- Case Study 3 -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <img src="images/ca.jpg" alt="Coca-Cola Water Recycling" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <a href='Industrial Water Recycling Coca-Cola,India.html'><h2>Industrial Water Recycling – Coca-Cola, India</h2></a>
+                        <p><strong>Location:</strong> India (Industry Sector)</p>
+                        <p><strong>Problem:</strong> High water consumption in manufacturing processes, especially in beverage production.</p>
+                        <p><strong>Solution:</strong> Coca-Cola implemented <strong>zero water discharge (ZWD)</strong> systems to recycle water in production.</p>
+                        <p><strong>Outcome:</strong> Coca-Cola reduced freshwater usage by <strong>over 60%</strong>.</p>
+                        <p><strong>Key Takeaway:</strong> Water recycling can significantly reduce industrial dependence on freshwater sources.</p>
+                    </div>
+                </div>
+    
+                <!-- Case Study 4 -->
+                <div class="row mb-4">
+                    <div class="col-md-6 order-md-2">
+                        <img src="images/singapore-water.jpg" alt="Water Conservation in Singapore" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <a href='Urban Water Conservation Singapore.html'><h2>Urban Water Conservation Singapore</h2></a>
+                        <p><strong>Location:</strong> Singapore (Urban Sector)</p>
+                        <p><strong>Problem:</strong> Limited freshwater sources and a rapidly growing population.</p>
+                        <p><strong>Solution:</strong> Implementation of <strong>NEWater</strong>, a high-tech water recycling system that produces potable water from treated wastewater.</p>
+                        <p><strong>Outcome:</strong> NEWater accounts for <strong>40%</strong> of Singapore's water needs, ensuring water security.</p>
+                        <p><strong>Key Takeaway:</strong> Urban areas can address water scarcity by integrating advanced water recycling and reuse systems.</p>
+                    </div>
+                </div>
+    
+                <!-- Case Study 5 -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <img src="images/cr1.png" alt="Rainwater Harvesting in Cape Town" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <a href='Rainwater Harvesting Cape Town, South Africa.html'><h2>Rainwater Harvesting Cape Town, South Africa</h2></a>
+                        <p><strong>Location:</strong> Cape Town, South Africa (Urban Sector)</p>
+                        <p><strong>Problem:</strong> Severe droughts leading to water supply issues in urban areas.</p>
+                        <p><strong>Solution:</strong> Widespread implementation of <strong>rainwater harvesting</strong> systems across households and businesses.</p>
+                        <p><strong>Outcome:</strong> Over <strong>50 million liters</strong> of rainwater were collected annually, easing the city's water scarcity.</p>
+                        <p><strong>Key Takeaway:</strong> Rainwater harvesting is an affordable and effective way to supplement urban water supply.</p>
+                    </div>
+                </div>
+    
+                <!-- Case Study 6 -->
+                <div class="row mb-4">
+                    <div class="col-md-6 order-md-2">
+                        <img src="images/ab1.jpg" alt="Desalination Australia" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <a href='Desalination Australia.html'><h2>Desalination Australia</h2></a>
+                        <p><strong>Location:</strong> Australia (Urban Sector)</p>
+                        <p><strong>Problem:</strong> Water shortages due to prolonged droughts affecting the coastal population.</p>
+                        <p><strong>Solution:</strong> Construction of large-scale <strong>desalination plants</strong> to convert seawater into potable water.</p>
+                        <p><strong>Outcome:</strong> The desalination plants provide a significant portion of water to major cities like Melbourne and Sydney.</p>
+                        <p><strong>Key Takeaway:</strong> Desalination is a viable option for regions with limited freshwater resources but abundant seawater.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Other Case Studies... -->
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Water Conservation Case Studies. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Search and Suggestions -->
+    <script>
+        const techniques = [
+            "Drip Irrigation",
+            "Alternate Wetting and Drying (AWD)",
+            "Zero Water Discharge (ZWD)",
+            "NEWater",
+            "Rainwater Harvesting",
+            "Desalination",
+            "Water Recycling"
+        ];
+
+        document.getElementById('search').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const suggestionsBox = document.getElementById('suggestions');
+            suggestionsBox.innerHTML = '';
+            
+            if (query) {
+                const filteredTechniques = techniques.filter(function(technique) {
+                    return technique.toLowerCase().includes(query);
+                });
+
+                filteredTechniques.forEach(function(technique) {
+                    const div = document.createElement('div');
+                    div.textContent = technique;
+                    div.addEventListener('click', function() {
+                        document.getElementById('search').value = technique;
+                        suggestionsBox.innerHTML = '';
+                    });
+                    suggestionsBox.appendChild(div);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

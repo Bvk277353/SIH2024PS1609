@@ -1,0 +1,77 @@
+/* General reset and body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, rgba(0, 175, 255, 0.7), rgba(0, 100, 255, 0.7)); /* Blue water gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #fff;
+}
+
+/* Categories container */
+.categories {
+    display: flex;
+    gap: 30px;
+}
+
+/* Individual category styling */
+.category {
+    background: rgba(0, 0, 255, 0.6); /* Transparent blue background */
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 150px;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Adds a soft blur effect */
+}
+
+.category img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.3); /* Subtle blue shadow */
+}
+
+/* Category title */
+.category h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Hover effects */
+.category:hover {
+    transform: translateY(-10px); /* Lift effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 255, 0.4); /* Glowing effect */
+}
+
+.category:active {
+    transform: translateY(0); /* Reset on click */
+}
+
+/* Smooth hover effect for the categories */
+.category:hover img {
+    transform: scale(1.1); /* Slightly increase image size */
+    transition: transform 0.3s ease;
+}
+
+/* For smaller screens, stack the categories vertically */
+@media (max-width: 768px) {
+    .categories {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

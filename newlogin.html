@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Webpage</title>
+    <style>
+        /* General Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Background video styling */
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Loading overlay */
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            text-align: center;
+            line-height: 100vh;
+            font-size: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Section containers */
+        .container {
+            display: none;
+            position: relative;
+            width: 350px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin: auto;
+            text-align: center;
+        }
+
+        .active {
+            display: block;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #f7e9dc;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #ddd;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+        }
+
+        a {
+            color: #f7e9dc;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background video -->
+    <video autoplay muted loop>
+        <source src="img/loginvideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Loading overlay -->
+    <div id="loading">Loading...</div>
+
+    <!-- Login Section -->
+    <div id="loginSection" class="container active">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label>Username:</label>
+            <input type="text" name="username" required>
+            
+            <label>Password:</label>
+            <input type="password" name="password" required>
+            
+            <button type="submit">Login</button>
+            <a href="#" onclick="switchSection('forgotPasswordSection')">Forgot Password?</a>
+        </form>
+    </div>
+
+    <!-- Forgot Password Section -->
+    <div id="forgotPasswordSection" class="container">
+        <h2>Forgot Password</h2>
+        <form id="forgotPasswordForm">
+            <label>Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <div style="display: flex; justify-content: space-between;">
+                <button type="submit" id="submit">Get OTP</button>
+                <button type="button" id="submit1" disabled>Resend OTP 60s</button>
+            </div>
+        </form>
+        <form id="otpForm" style="display: none;">
+            <label>Enter OTP:</label>
+            <input type="text" id="otp" name="otp" required placeholder="Enter your OTP">
+            <input type="hidden" id="hiddenEmail" name="email">
+            <button type="submit" style="width: 100%;">Reset Password</button>
+        </form>
+    </div>
+
+    <!-- Update Password Section -->
+    <div id="updatePasswordSection" class="container">
+        <h2>Update Password</h2>
+        <form id="updatePasswordForm">
+            <input type="hidden" id="email" name="email">
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required placeholder="Enter new password">
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm new password">
+
+            <button type="submit">Update Password</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to switch between sections
+        function switchSection(sectionId) {
+            const sections = document.querySelectorAll('.container');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Show loading animation
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => form.addEventListener('submit', showLoading));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            display: block;
+            background: skyblue;
+        }
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        button, select {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <button id="startButton">Start</button>
+        <button id="resetButton" style="display: none;">Reset</button>
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+    <div id="score">Score: 0</div>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let fish = { x: 50, y: canvas.height / 2, size: 20, gravity: 0.1, lift: -5, velocity: 0, forwardSpeed: 0 };
+        let pipes = [];
+        let score = 0;
+        let gameRunning = false;
+        let pipeSpeed = 2;
+        let difficulty = 'easy';
+        const pipeWidth = 50;
+        const gap = 150;
+
+        function resetGame() {
+            fish.y = canvas.height / 2;
+            fish.velocity = 0;
+            fish.x = 50;
+            fish.forwardSpeed = 0;
+            pipes = [];
+            score = 0;
+            document.getElementById('score').innerText = `Score: ${score}`;
+        }
+
+        function generatePipe() {
+            const pipeHeight = Math.random() * (canvas.height / 2);
+            pipes.push({
+                x: canvas.width,
+                top: pipeHeight,
+                bottom: pipeHeight + gap
+            });
+        }
+
+        function updateGame() {
+            if (!gameRunning) return;
+
+            fish.velocity += fish.gravity;
+            fish.y += fish.velocity;
+
+            if (fish.y > canvas.height || fish.y < 0) {
+                endGame();
+                return;
+            }
+
+            for (let i = pipes.length - 1; i >= 0; i--) {
+                pipes[i].x -= pipeSpeed;
+
+                if (
+                    fish.x + fish.size > pipes[i].x &&
+                    fish.x < pipes[i].x + pipeWidth &&
+                    (fish.y < pipes[i].top || fish.y > pipes[i].bottom)
+                ) {
+                    endGame();
+                    return;
+                }
+
+                if (pipes[i].x + pipeWidth < 0) {
+                    pipes.splice(i, 1);
+                    score++;
+                    document.getElementById('score').innerText = `Score: ${score}`;
+                }
+            }
+
+            if (pipes.length === 0 || pipes[pipes.length - 1].x < canvas.width - 300) {
+                generatePipe();
+            }
+        }
+
+        function drawGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = 'orange';
+            ctx.beginPath();
+            ctx.ellipse(fish.x, fish.y, fish.size * 1.5, fish.size, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(fish.x - fish.size, fish.y);
+            ctx.lineTo(fish.x - fish.size - 15, fish.y - 10);
+            ctx.lineTo(fish.x - fish.size - 15, fish.y + 10);
+            ctx.closePath();
+            ctx.fill();
+
+            for (const pipe of pipes) {
+                ctx.fillStyle = 'green';
+                ctx.fillRect(pipe.x, 0, pipeWidth, pipe.top);
+                ctx.fillRect(pipe.x, pipe.bottom, pipeWidth, canvas.height - pipe.bottom);
+            }
+
+            if (gameRunning) {
+                requestAnimationFrame(() => {
+                    updateGame();
+                    drawGame();
+                });
+            }
+        }
+
+        function endGame() {
+            gameRunning = false;
+            document.getElementById('resetButton').style.display = 'block';
+            document.getElementById('startButton').style.display = 'none';
+        }
+
+        function startGame() {
+            resetGame();
+            gameRunning = true;
+            document.getElementById('startButton').style.display = 'none';
+            document.getElementById('resetButton').style.display = 'none';
+            drawGame();
+        }
+
+        document.getElementById('startButton').addEventListener('click', startGame);
+        document.getElementById('resetButton').addEventListener('click', () => {
+            resetGame();
+            document.getElementById('startButton').style.display = 'block';
+            document.getElementById('resetButton').style.display = 'none';
+        });
+
+        document.getElementById('difficulty').addEventListener('change', (e) => {
+            difficulty = e.target.value;
+            if (difficulty === 'easy') {
+                pipeSpeed = 1;
+                fish.gravity = 0.1;
+                fish.lift = -3;
+            } else if (difficulty === 'medium') {
+                pipeSpeed = 3;
+                fish.gravity = 0.2;
+                fish.lift = -5;
+            } else if (difficulty === 'hard') {
+                pipeSpeed = 6;
+                fish.gravity = 0.3;
+                fish.lift = -7;
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'ArrowUp' || e.code === 'KeyW') {
+                fish.velocity = fish.lift;
+            } else if (e.code === 'ArrowDown' || e.code === 'KeyS') {
+                fish.velocity += 3;
+            } else if (e.code === 'Space') {
+                if (!gameRunning) {
+                    startGame();
+                }
+            }
+        });
+
+        window.addEventListener('click', () => {
+            if (!gameRunning) {
+                startGame();
+            }
+        });
+    </script>
+</body>
+</html>

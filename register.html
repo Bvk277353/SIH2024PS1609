@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        /* Background Video */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Form Container */
+        form {
+            position: relative;
+            margin: auto;
+            top: 15%;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px 30px; /* Added padding to give equal spacing */
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #f4a261;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        label {
+            font-size: 16px;
+            color: #ffd700;
+            margin-bottom: 5px;
+            display: block;
+            margin-left: 5px; /* Added a slight left margin for spacing */
+        }
+
+        input, select, button {
+            width: calc(100% - 10px); /* Added consistent padding for inputs */
+            margin-bottom: 15px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="email"], input[type="text"], input[type="password"], select {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        button {
+            background-color: #f4a261;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #e76f51;
+        }
+
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: 9999;
+            text-align: center;
+            line-height: 100vh;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video class="video-bg" autoplay muted loop>
+        <source src="img/farm.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <h2>Register</h2>
+    <form action="register.php" method="post" enctype="multipart/form-data">
+        <label>Email:</label>
+        <input type="email" name="mobilenumber" required>
+
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <label>Gender:</label>
+        <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>State:</label>
+        <input type="text" name="language">
+
+        <label>Profile Image:</label>
+        <input type="file" name="profile_image" required>
+
+        <button type="submit">Register</button>
+    </form>
+    <div id="loading">Loading...</div>
+</body>
+</html>

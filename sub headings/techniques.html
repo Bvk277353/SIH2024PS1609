@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techniques to Address Water Scarcity</title>
+    <!-- Styles -->
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+            color: #01579b;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            text-transform: uppercase;
+            color: #0277bd;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px #90caf9;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p, ul, li {
+            line-height: 1.6;
+            font-size: 1.2em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #0288d1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #03a9f4;
+        }
+
+        /* Card Style */
+        .section {
+            background: white;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-out;
+        }
+
+        .section h3 {
+            color: #0288d1;
+            border-bottom: 2px solid #0288d1;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #0288d1;
+            color: white;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+        }
+
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-shadow: 0px 0px 8px #03a9f4;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #01579b;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #bbdefb;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#conservation">Conservation</a>
+        <a href="#recycling">Recycling</a>
+        <a href="#rainwater">Rainwater Harvesting</a>
+        <a href="#groundwater">Groundwater</a>
+        <a href="#desalination">Desalination</a>
+    </div>
+
+    <h1>Techniques to Address Water Scarcity</h1>
+
+    <!-- Section 1 -->
+    <div id="conservation" class="section">
+        <h2>1. Water Conservation Techniques</h2>
+        <h3>Reducing Water Loss</h3>
+        <ul>
+            <li>Install <strong>leakage detection systems</strong> using IoT and AI.</li>
+            <li>Adopt <strong>drip irrigation</strong> to minimize water wastage in agriculture.</li>
+            <li>Use mulching to retain soil moisture.</li>
+        </ul>
+        <h3>Behavioral Changes</h3>
+        <ul>
+            <li>Promote awareness campaigns on water-saving techniques.</li>
+            <li>Encourage the use of water-efficient appliances like low-flow showerheads.</li>
+        </ul>
+    </div>
+
+    <!-- Section 2 -->
+    <div id="recycling" class="section">
+        <h2>2. Water Recycling and Reuse</h2>
+        <h3>Domestic and Industrial Reuse</h3>
+        <ul>
+            <li>Treat greywater for irrigation and flushing.</li>
+            <li>Install systems to recycle industrial water.</li>
+        </ul>
+        <h3>Treated Wastewater</h3>
+        <ul>
+            <li>Decentralized treatment plants for local reuse.</li>
+            <li>Constructed wetlands to purify wastewater naturally.</li>
+        </ul>
+    </div>
+
+    <!-- Section 3 -->
+    <div id="rainwater" class="section">
+        <h2>3. Rainwater Harvesting</h2>
+        <ul>
+            <li>Install rooftop rainwater collection systems.</li>
+            <li>Use percolation pits to recharge underground aquifers.</li>
+        </ul>
+    </div>
+
+    <!-- Section 4 -->
+    <div id="groundwater" class="section">
+        <h2>4. Groundwater Management</h2>
+        <ul>
+            <li>Construct recharge wells to replenish aquifers.</li>
+            <li>Use smart meters to regulate groundwater extraction.</li>
+        </ul>
+    </div>
+
+    <!-- Section 5 -->
+    <div id="desalination" class="section">
+        <h2>5. Desalination and Innovative Water Production</h2>
+        <ul>
+            <li>Adopt reverse osmosis and forward osmosis technologies.</li>
+            <li>Install solar desalination units in coastal regions.</li>
+            <li>Use atmospheric water generators to extract moisture from air.</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Designed with care to raise awareness about water scarcity.</p>
+        <p><a href="#top">Back to top</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth Scroll Animation for Navbar Links
+        document.querySelectorAll('.navbar a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

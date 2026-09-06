@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydro Hub</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', sans-serif;
+            background: linear-gradient(to bottom, #00BFFF, #87CEEB);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #0077BE;
+            animation: wave 4s infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { background-color: #0077BE; }
+            50% { background-color: #005F9E; }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px #004F7F;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            text-shadow: 1px 1px #005F9E;
+        }
+
+        .section p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .video-container iframe {
+            border: none;
+            border-radius: 10px;
+            width: 500px;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .poem-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .poem-text {
+            width: 60%; /* Adjust this value to control the text width */
+        }
+
+        .poem-image {
+            width: 35%; /* Adjust this value to control the image width */
+        }
+
+        .poem-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px; /* Optional, for rounded corners */
+        }
+
+        .fun-zone {
+            background: #32CD32;
+            color: #fff;
+        }
+
+        .fun-zone button {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            color: #32CD32;
+            background: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .fun-zone button:hover {
+            transform: scale(1.1);
+        }
+
+        #poem {
+            background-color: #f0f8ff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #poem h2 {
+            font-size: 2.5em;
+            color: #0077BE;
+            margin-bottom: 20px;
+        }
+
+        #poem p {
+            font-size: 1.5em;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        footer {
+            background-color: #0077BE;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        /* New section styles */
+        #water-tips-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            background-color: #ADD8E6;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Blue animation effect for the Water Tips section */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #water-tips-container h2 {
+            font-size: 3em; /* Increased font size */
+            color: #003366;
+            margin-bottom: 30px;
+        }
+
+        #water-tips-container ul {
+            font-size: 1.5em; /* Increased font size */
+            text-align: left;
+            margin: 0;
+            max-width: 500px;
+            list-style-type: square;
+        }
+
+        #water-tips-container li {
+            margin-bottom: 15px;
+        }
+
+        #water-tips-container li:hover {
+            color: #005f87;
+            cursor: pointer;
+        }
+
+        /* Increased video size */
+        .video-container iframe {
+            width: 600px;
+            height: 350px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hydro Hub</h1>
+        <nav>
+            <a href="#importance">Importance of Water</a>
+            <a href="#saving">Save Water Tips</a>
+            <a href="#irrigation">Drip Irrigation</a>
+            <a href="#fun-zone">Fun Zone</a>
+        </nav>
+    </header>
+
+    <section id="poem" class="section">
+        <div class="poem-container">
+            <div class="poem-text">
+                <h2>The Power of Water</h2>
+                <p>Water, water, clear and bright,<br>
+                Keeps me healthy, keeps me light.<br>
+                Drinks for my body, brain, and heart,<br>
+                With every sip, I feel so smart!</p>
+                <p>Water’s magic, we can’t deny,<br>
+                It helps us grow and reach the sky.<br>
+                So drink it daily, and you will see,<br>
+                How wonderful life can really be!</p>
+            </div>
+            <div class="poem-image">
+                <img src="poem.png" alt="Water Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- New Water Tips Section -->
+    <section id="saving" class="section">
+        <div id="water-tips-container">
+            <div>
+                <h2>Water Tips for Kids</h2>
+                <ul>
+                    <li>Always turn off the tap while brushing your teeth.</li>
+                    <li>Drink water regularly to stay healthy and strong!</li>
+                    <li>Take shorter showers to save water.</li>
+                    <li>Help your parents water the plants, but don’t waste water.</li>
+                    <li>Make sure to use a bucket for washing your car instead of a hose.</li>
+                    <li>Spread the word: Tell your friends why saving water is important!</li>
+                </ul>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/belXC_IoW4o?si=6oNaKjUoFHGYuQjS" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="importance" class="section">
+        <h2>Why is Water Magical?</h2>
+        <p>Water gives life to all living things! Plants, animals, and even we humans depend on it every day. Let’s explore why it’s so important!</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/rUQEm3UYu5M" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/jYer5OwQaXo?si=p4_PleUHa_ED1N7T" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/Eg9CYl9xR28" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="irrigation" class="section">
+        <h2>Drip Irrigation - The Smart Way to Save Water</h2>
+        <p>Drip irrigation delivers water drop by drop to plants, saving lots of water. Let’s see how it works!</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/Xej22GsLLQA" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/N5zQ-mHIZo8" allowfullscreen></iframe>
+        </div>
+   
+    <footer>
+        <p>Hydro Hub © 2024</p>
+    </footer>
+</body>
+</html>

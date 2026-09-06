@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Pollution Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Interactive Water Pollution Map</h1>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    // Initialize the map
+    var map = L.map('map').setView([20.5937, 78.9629], 5); // Centered on India
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    // Sample GeoJSON Data (Polluted Rivers/Lakes)
+    var pollutionData = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {
+                    "name": "Yamuna River",
+                    "pollution_level": "High",
+                    "description": "Industrial waste dumping site"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [77.217, 28.6139] // Delhi
+                }
+            },
+            {
+                "type": "Feature",
+                "properties": {
+                    "name": "Ganga River",
+                    "pollution_level": "Moderate",
+                    "description": "Agricultural runoff"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [83.000, 25.3176] // Varanasi
+                }
+            }
+        ]
+    };
+
+    // Add pollution markers to map
+    L.geoJSON(pollutionData, {
+        pointToLayer: function (feature, latlng) {
+            return L.marker(latlng);
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(
+                `<h3>${feature.properties.name}</h3>
+                <b>Pollution Level:</b> ${feature.properties.pollution_level}<br>
+                <p>${feature.properties.description}</p>`
+            );
+        }
+    }).addTo(map);
+
+</script>
+
+</body>
+</html>

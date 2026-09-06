@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Themed Dropdown</title>
+    <style>
+        /* Base Styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0056b3; /* Dark Blue */
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #003d80; /* Darker Blue */
+            border-radius: 5px;
+        }
+
+        /* Dropdown Container */
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+        }
+
+        /* Custom Dropdown Menu */
+        .custom-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #007bff; /* Medium Blue */
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .custom-dropdown-menu a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+        }
+
+        .custom-dropdown-menu a:hover {
+            background-color: #0056b3; /* Darker Blue */
+        }
+
+        /* Show Dropdown on Hover */
+        .nav-item:hover .custom-dropdown-menu {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="service.html">Services</a>
+        <a href="blog.html">Blog</a>
+
+        <!-- Dropdown for Pages -->
+        <div class="nav-item">
+            <a class="dropdown-toggle">Pages</a>
+            <div class="custom-dropdown-menu">
+                <a href="feature.html">Our Feature</a>
+                <a href="product.html">Water Tools</a>
+                <a href="team.html">Our Team</a>
+                <a href="testimonial.html">Community Resources</a>
+                <a href="game/waterdropadventure.html">Game</a>
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+    </div>
+
+</body>
+</html>

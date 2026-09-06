@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="profilestyles.css">
+</head>
+<body>
+    <!-- Profile Section -->
+    <div class="profile-container">
+      <!-- Profile Button -->
+      <div id="profile-button" class="profile-button" onclick="togglePopup()">
+        <img id="profile-picture" src="profile.png" alt="Profile Picture" />
+      </div>
+
+      <!-- Profile Popup -->
+      <div id="profile-popup" class="profile-popup">
+        <div class="popup-header">
+          <h3>Profile</h3>
+          <button class="close-btn" onclick="togglePopup()">×</button>
+        </div>
+        <p>Your profile helps improve your interactions with HydroHub.</p>
+        <div class="button-container">
+          <button id="login-btn" class="login-btn">Login</button>
+          <button id="signup-btn" class="signup-btn">Sign Up</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="profilescript.js"></script>
+</body>
+</html>

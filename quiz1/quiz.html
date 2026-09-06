@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Conservation Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div>
+        <!-- User Details Form -->
+        <div class="user-details-container" id="user-details-container" >
+            <h1>Water Quiz</h1>
+            <form id="user-form" action="quiz.php" method="post">
+                <button type="submit" class="start-btn">Start Quiz</button>
+            </form>
+        </div>
+
+        <!-- Quiz Container -->
+        <div class="quiz-container" id="quiz-container" style="display: none;">
+            <h1 class="quiz-title">Test Your Water Conservation Knowledge 🌊</h1>
+            <div id="quiz-question" class="quiz-question">
+                <div class="question-text">Loading question...</div>
+            </div>
+            <div id="quiz-options" class="quiz-options">
+                <!-- Options will be dynamically added -->
+            </div>
+            <button id="next-btn" class="next-btn">Previous Question</button>
+            <button id="submit" class="next-btn">Submit</button>
+        </div>
+
+        <!-- Result Container -->
+        <div class="result" id="result" style="display: none;">
+            <h2>Congratulations, <span id="user-name-display"></span>!</h2>
+            <p>You scored: <span id="score-display" name="score-display">0</span> out of <span id="total-questions">0</span>.</p>
+            
+            <button id="download-btn" class="download-btn" style="display: none;">Download Certificate</button>
+        </div>
+    </div>
+    
+
+    
+
+    
+    <script src="quiz.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</body>
+</html>

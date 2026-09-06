@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaterHub - Social Media for Water Awareness</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f8ff;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #0077b6;
+            margin-right: 10px;
+        }
+        .post-content {
+            font-size: 16px;
+        }
+        .post-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .post-actions button {
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        .post-actions button:hover {
+            background-color: #005f8c;
+        }
+        .comments {
+            margin-top: 10px;
+        }
+        .comment-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .poll-form input {
+            margin-right: 10px;
+        }
+        .polls, .water-tips, .eye-comfort {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #0077b6;
+            color: white;
+            margin-top: 30px;
+        }
+        .night-mode {
+            color: #ffffff;
+            background-color: #2f2f2f;
+        }
+        .night-mode button {
+            color: #fff;
+            background-color: #0077b6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">WaterHub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="quiz1/quiz.html">quiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0);" onclick="toggleNightMode()">🌙 Night Mode</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Row for Left and Right Sidebars -->
+        <div class="row">
+            <!-- Left Sidebar: Profile, Quick Actions -->
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <h5>My Profile</h5>
+                    <!-- Profile Button -->
+        
+            <img id="profile-picture" src="" alt="Profile Picture" />
+        
+                    
+                    <button class="btn btn-primary btn-sm">Edit Profile</button>
+                    <h5 class="mt-3">Quick Actions</h5>
+                    <ul>
+                        <li><a href="#">Create Post</a></li>
+                        <li><a href="#">Explore Topics</a></li>
+                        <li><a href="#">Water Facts</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Feed Section -->
+            <div class="col-md-6">
+                <!-- Post Form -->
+                <div class="post">
+                    <form action="community/community.php" method="post">
+                        <textarea class="form-control" rows="3" placeholder="What's your water status today?" id="post-input" name="post-input"></textarea>
+                        <button class="btn btn-primary mt-3">Post</button>
+                    </form>    
+                </div>
+
+                <!-- Posts Container -->
+                <div id="posts-container">
+                </div>
+                    
+            </div>
+
+            <!-- Right Sidebar: Trending Topics and Tips -->
+            <div class="col-md-3">
+                <div class="polls">
+                    <h5>Poll of the Day</h5>
+                    <form class="poll-form">
+                        <label>How do you save water?</label><br>
+                        <input type="radio" name="poll" value="Rainwater Harvesting"> Rainwater Harvesting<br>
+                        <input type="radio" name="poll" value="Efficient Appliances"> Efficient Appliances<br>
+                        <input type="radio" name="poll" value="None"> None<br>
+                        <button type="submit" class="btn btn-primary mt-2">Vote</button>
+                    </form>
+                </div>
+
+                <div class="water-tips mt-3">
+                    <h5>Water Saving Tips</h5>
+                    <ul>
+                        <li>Turn off the tap while brushing your teeth.</li>
+                        <li>Fix leaky faucets and pipes immediately.</li>
+                        <li>Install water-saving appliances like low-flow showerheads.</li>
+                        <li>Collect rainwater for outdoor use.</li>
+                    </ul>
+                </div>
+
+                <div class="eye-comfort mt-3">
+                    <h5>Eye Comfort Features</h5>
+                    <p>Click the button to enable text-to-speech for reading content aloud.</p>
+                    <button class="btn btn-info" onclick="textToSpeech()">🔊 Text to Speech</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 WaterHub. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JS and Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('profile-picture').src=urlParams.get('image');
+        
+    const fetchUrl = "community/post.php";
+
+    // Function to fetch and display posts
+    
+    // Replace with the actual path to your PHP file
+    
+
+    // Function to fetch and display posts
+    fetch(fetchUrl)
+        .then(response => response.json())
+        .then(posts => {
+            const postsContainer = document.getElementById("posts-container");
+
+            // Clear existing content in case of multiple loads
+            postsContainer.innerHTML = "";
+
+            if (posts.length === 0) {
+                postsContainer.innerHTML = "<p>No posts available.</p>";
+                return;
+            }
+
+            posts.forEach(post => {
+                // Create a new post div
+                const postDiv = document.createElement("div");
+                postDiv.className = "post";
+
+                // Populate the post content
+                postDiv.innerHTML = `
+                    <div class="post-header">
+                        <div class="profile-img"></div>
+                        <span class="font-weight-bold">User ID: ${post.user_id}</span>
+                    </div>
+                    <p class="post-content">${post.content}</p>
+                    
+                    <div class="post-actions">
+                        <button onclick="likePost(this)">👍 Like</button>
+                        <button onclick="commentPost(this)">💬 Comment</button>
+                        <button onclick="sharePost(this)">🔗 Share</button>
+                    </div>
+                    <div class="comments">
+                        <input type="text" class="comment-input" placeholder="Add a comment...">
+                    </div>
+                `;
+
+                // Append the post div to the container
+                postsContainer.appendChild(postDiv);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching posts:", error);
+            const postsContainer = document.getElementById("posts-container");
+            postsContainer.innerHTML = "<p>Error loading posts. Please try again later.</p>";
+        });
+
+    // Placeholder functions for actions
+    function likePost(button) {
+        alert("Liked the post!");
+    }
+
+    function commentPost(button) {
+        alert("Commented on the post!");
+    }
+
+    function sharePost(button) {
+        alert("Shared the post!");
+    }
+        // Text-to-Speech Feature
+        function textToSpeech() {
+            const text = document.getElementById('post-input').value || 'Please enter text to read.';
+            const speech = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+</html>

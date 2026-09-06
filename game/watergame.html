@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix the Leaks Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 2px solid #009688;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+            margin-top: 10px;
+        }
+
+        .score-board {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fix the Leaks!</h1>
+    <p class="score-board">Score: <span id="score">0</span></p>
+    <canvas id="gameCanvas" width="800" height="500"></canvas>
+
+    <script>
+        // Set up the canvas
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Game variables
+        let score = 0;
+        const leaks = [];
+        const leakRadius = 25;
+        const leakInterval = 2000; // New leak every 2 seconds
+        const leakDuration = 5000; // Leak disappears after 5 seconds
+        const gameDuration = 60000; // Game lasts for 60 seconds
+        let gameTime = 0;
+        let isGameRunning = true;
+
+        // Create a new leak
+        function createLeak() {
+            if (!isGameRunning) return;
+            const x = Math.random() * (canvas.width - leakRadius * 2) + leakRadius;
+            const y = Math.random() * (canvas.height - leakRadius * 2) + leakRadius;
+
+            const leak = { x, y, createdAt: Date.now() };
+            leaks.push(leak);
+
+            // Remove the leak after its duration expires
+            setTimeout(() => {
+                const index = leaks.indexOf(leak);
+                if (index !== -1 && isGameRunning) {
+                    leaks.splice(index, 1);
+                }
+            }, leakDuration);
+        }
+
+        // Draw leaks on the canvas
+        function drawLeaks() {
+            leaks.forEach(leak => {
+                ctx.beginPath();
+                ctx.arc(leak.x, leak.y, leakRadius, 0, Math.PI * 2);
+                ctx.fillStyle = 'blue';
+                ctx.fill();
+                ctx.closePath();
+            });
+        }
+
+        // Handle click events to fix leaks
+        canvas.addEventListener('click', event => {
+            if (!isGameRunning) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const clickY = event.clientY - rect.top;
+
+            leaks.forEach((leak, index) => {
+                const distance = Math.sqrt(
+                    (clickX - leak.x) ** 2 + (clickY - leak.y) ** 2
+                );
+
+                if (distance < leakRadius) {
+                    leaks.splice(index, 1); // Remove the clicked leak
+                    score += 10; // Increase score
+                    document.getElementById('score').textContent = score;
+                }
+            });
+        });
+
+        // Main game loop
+        function gameLoop() {
+            if (!isGameRunning) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawLeaks();
+
+            gameTime += 16; // Approx. frame duration
+            if (gameTime >= gameDuration) {
+                endGame();
+            } else {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        // End the game
+        function endGame() {
+            isGameRunning = false;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.font = '30px Arial';
+            ctx.fillStyle = '#00796b';
+            ctx.textAlign = 'center';
+            ctx.fillText(`Game Over! Your Score: ${score}`, canvas.width / 2, canvas.height / 2);
+        }
+
+        // Start the game
+        function startGame() {
+            setInterval(createLeak, leakInterval);
+            gameLoop();
+        }
+
+        startGame();
+    </script>
+</body>
+
+</html>

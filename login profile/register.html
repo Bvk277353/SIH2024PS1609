@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: 9999;
+            text-align: center;
+            line-height: 100vh;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <form action="register.php" method="post" enctype="multipart/form-data">
+        <label>EMail:</label>
+        <input type="email" name="mobilenumber" required><br><br>
+
+        <label>Username:</label>
+        <input type="text" name="username" required><br><br>
+        
+        <label>Password:</label>
+        <input type="password" name="password" required><br><br>
+        
+        <label>Gender:</label>
+        <select name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select><br><br>
+        
+        <label>Language:</label>
+        <input type="text" name="language"><br><br>
+        
+        <label>Profile Image:</label>
+        <input type="file" name="profile_image" required><br><br>
+        
+        <button type="submit">Register</button>
+    </form>
+    <div id="loading">Loading...</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Conservation Technologies</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop class="bg-video">
+        <source src="water.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Header -->
+    <header>
+        <h1>Global Water Conservation Technologies</h1>
+        <p>Explore cutting-edge solutions tackling water scarcity worldwide.</p>
+    </header>
+
+    <!-- Technologies Grid -->
+    <section class="tech-grid">
+        <!-- Each technology tile -->
+        <div class="tech-tile" data-tech="desalination">
+            <img src="desalination.jpeg" alt="Desalination">
+            <h3>Desalination</h3>
+        </div>
+        <div class="tech-tile" data-tech="drip-irrigation">
+            <img src="drip irrigation.jpeg" alt="Drip Irrigation">
+            <h3>Drip Irrigation</h3>
+        </div>
+        <div class="tech-tile" data-tech="fog-harvesting">
+            <img src="fog.jpeg" alt="Fog Harvesting">
+            <h3>Fog Harvesting</h3>
+        </div>
+        <div class="tech-tile" data-tech="recycling">
+            <img src="recycling.png" alt="Water Recycling">
+            <h3>Water Recycling</h3>
+        </div>
+        <!-- Add more tiles as needed -->
+    </section>
+
+    <!-- Modal for Technology Details -->
+    <div id="tech-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="tech-title"></h2>
+            <p id="tech-description"></p>
+            <p><strong>Countries Using:</strong> <span id="tech-countries"></span></p>
+            <p><strong>Success Percentage:</strong> <span id="tech-success"></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

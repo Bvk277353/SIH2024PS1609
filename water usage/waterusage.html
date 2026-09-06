@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Usage Monitoring</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Monitor Your Daily Water Usage</h1>
+        <p>Track your daily water consumption and make small changes to conserve water.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Enter Your Daily Water Usage</h2>
+            <label for="waterUsage">Enter amount of water used (in liters):</label>
+            <input type="number" id="waterUsage" placeholder="Water in Liters" min="0" required>
+            <button onclick="submitUsage()">Submit</button>
+        </section>
+
+        <section id="usageResult" style="display:none;">
+            <h2>Today's Water Usage</h2>
+            <p id="usageAmount"></p>
+            <p id="conservationTip"></p>
+        </section>
+
+        <section id="dailySummary" style="display:none;">
+            <h2>Daily Summary</h2>
+            <p>Tracking your water usage helps you become more conscious of how much you are using daily and where you can cut down on waste.</p>
+            <ul>
+                <li>Reduce shower time by 2-3 minutes to save water!</li>
+                <li>Fix any leaks in your faucets to prevent wastage.</li>
+                <li>Consider installing water-saving devices in your home.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Water Conservation Initiative | All Rights Reserved</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>

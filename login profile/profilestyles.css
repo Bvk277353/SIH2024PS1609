@@ -1,0 +1,93 @@
+/* Profile Container */
+.profile-container {
+  position: relative;
+}
+
+.profile-button {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.profile-button img {
+  width:  100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 2px solid #2196f3;
+  object-fit: cover;
+}
+
+/* Profile Popup */
+.profile-popup {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 300px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: none;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+}
+
+.close-btn:hover {
+  color: #f44336;
+}
+
+.profile-popup p {
+  font-size: 14px;
+  color: #666;
+  margin: 10px 0 20px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.login-btn,
+.signup-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn {
+  background-color: #2196f3;
+}
+
+.login-btn:hover {
+  background-color: #1976d2;
+}
+
+.signup-btn {
+  background-color: #4caf50;
+}
+
+.signup-btn:hover {
+  background-color: #388e3c;
+}

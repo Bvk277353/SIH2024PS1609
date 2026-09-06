@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Usage Calculator</title>
+  <!-- Bootstrap CSS Link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Custom Background Image */
+    body {
+      background-image: url('background.jpg'); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    /* Header Styling with Professional Title */
+    #header {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      padding: 20px 0;
+      text-align: center;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    #header h1 {
+      font-size: 2rem; /* Reduced title size */
+      font-weight: bold;
+      color: #00bcd4;
+    }
+
+    #header p {
+      font-size: 1.2rem;
+      color: #f8f8f8;
+      margin-top: 10px;
+    }
+
+    /* Main Container */
+    #main-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    /* Left Section for Slogans */
+    #left-section {
+      width: 30%;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+
+    #left-section h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .slogan {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Center Section for Calculator */
+    #calculator-container {
+      width: 35%;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+    }
+
+    #calculator-container h2 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    /* Right Section for Live Water Usage Stats */
+    #right-section {
+      width: 30%;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+    }
+
+    #right-section h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .live-counter {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      margin-top: 40px;
+      border-radius: 10px;
+    }
+
+    /* Responsive Design for Small Screens */
+    @media (max-width: 768px) {
+      #main-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #left-section, #calculator-container, #right-section {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header id="header">
+    <h1>Water Usage Calculator</h1>
+    <p>Track your water usage, conserve resources, and contribute to a sustainable future!</p>
+  </header>
+
+  <!-- Main Content Section -->
+  <div id="main-container">
+    <!-- Left Section for Slogans -->
+    <div id="left-section">
+      <h3>Our Commitment to Saving Water</h3>
+      <div class="slogan">"Save water today, secure tomorrow."</div>
+      <div class="slogan">"Every drop counts—let's make a difference!"</div>
+      <div class="slogan">"Your conscious choices help conserve water."</div>
+    </div>
+
+    <!-- Center Section for Water Usage Calculator -->
+    <div id="calculator-container">
+      <h2>Water Usage Calculator</h2>
+      <form id="water-form" onsubmit="calculateWaterUsage(event)">
+        <table class="table table-bordered text-white">
+          <tr>
+            <td><label for="showers">Showers (in minutes):</label></td>
+            <td><input type="number" class="form-control" id="showers" placeholder="e.g., 10" required></td>
+          </tr>
+          <tr>
+            <td><label for="toilet">Toilet Flushes (per day):</label></td>
+            <td><input type="number" class="form-control" id="toilet" placeholder="e.g., 5" required></td>
+          </tr>
+          <tr>
+            <td><label for="washing">Laundry Loads (per week):</label></td>
+            <td><input type="number" class="form-control" id="washing" placeholder="e.g., 3" required></td>
+          </tr>
+          <tr>
+            <td><label for="dishwashing">Dishwashing (minutes per day):</label></td>
+            <td><input type="number" class="form-control" id="dishwashing" placeholder="e.g., 15" required></td>
+          </tr>
+        </table>
+        <button type="submit" class="btn btn-primary btn-lg w-100">Calculate Usage</button>
+      </form>
+
+      <!-- Display Results -->
+      <div id="result-container" class="text-center" style="margin-top: 20px;">
+        <h3>Your Estimated Water Usage</h3>
+        <p>Total water usage per day: <span id="daily-usage">0</span> liters</p>
+        <p>Total water usage per week: <span id="weekly-usage">0</span> liters</p>
+        <p>Total water usage per year: <span id="annual-usage">0</span> liters</p>
+      </div>
+    </div>
+
+    <!-- Right Section for Live Water Usage Stats -->
+    <div id="right-section">
+      <h3>Live Water Usage</h3>
+      <div class="live-counter">Global Usage: <span id="global-usage">2.5 Billion Liters</span></div>
+      <div class="live-counter">India Usage: <span id="india-usage">800 Million Liters</span></div>
+      <div class="live-counter">Karnataka Usage: <span id="karnataka-usage">120 Million Liters</span></div>
+      <div class="live-counter">Andhra Pradesh Usage: <span id="andhra-usage">150 Million Liters</span></div>
+      <!-- Real-time Data Update -->
+      <div class="live-counter">Live Update: <span id="live-update">Updating...</span></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <!-- Footer content removed per request -->
+  </footer>
+
+  <!-- Bootstrap JS and Custom JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+  <script>
+    // Function to simulate live data
+    let globalUsage = 2.5; // in billion liters
+    let indiaUsage = 800; // in million liters
+    let karnatakaUsage = 120; // in million liters
+    let andhraUsage = 150; // in million liters
+
+    // Incrementing values every second
+    function updateLiveData() {
+      globalUsage += 0.01;  // Simulating global water usage increment
+      indiaUsage += 0.005;  // Simulating India water usage increment
+      karnatakaUsage += 0.002; // Simulating Karnataka water usage increment
+      andhraUsage += 0.003; // Simulating Andhra Pradesh water usage increment
+
+      document.getElementById("global-usage").innerText = globalUsage.toFixed(2) + " Billion Liters";
+      document.getElementById("india-usage").innerText = indiaUsage.toFixed(2) + " Million Liters";
+      document.getElementById("karnataka-usage").innerText = karnatakaUsage.toFixed(2) + " Million Liters";
+      document.getElementById("andhra-usage").innerText = andhraUsage.toFixed(2) + " Million Liters";
+    }
+
+    // Call update function every second
+    setInterval(updateLiveData, 1000);
+
+    // Function to calculate the water usage
+    function calculateWaterUsage(event) {
+      event.preventDefault();
+
+      // Get input values
+      const showers = document.getElementById('showers').value;
+      const toilet = document.getElementById('toilet').value;
+      const washing = document.getElementById('washing').value;
+      const dishwashing = document.getElementById('dishwashing').value;
+
+      // Constants for water usage (liters per unit)
+      const showerUsage = 10; // 10 liters per minute
+      const toiletUsage = 3; // 3 liters per flush
+      const washingUsage = 50; // 50 liters per load
+      const dishwashingUsage = 12; // 12 liters per minute
+
+      // Calculate water usage
+      const dailyUsage = (showerUsage * showers) + (toiletUsage * toilet) + (washingUsage * (washing / 7)) + (dishwashingUsage * dishwashing);
+      const weeklyUsage = dailyUsage * 7;
+      const annualUsage = dailyUsage * 365;
+
+      // Display results
+      document.getElementById("daily-usage").innerText = dailyUsage.toFixed(2);
+      document.getElementById("weekly-usage").innerText = weeklyUsage.toFixed(2);
+      document.getElementById("annual-usage").innerText = annualUsage.toFixed(2);
+    }
+  </script>
+</body>
+</html>

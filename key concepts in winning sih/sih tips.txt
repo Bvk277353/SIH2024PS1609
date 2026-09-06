@@ -1,0 +1,17 @@
+find the novality of solution satisfying  problem statement
+
+in what way it will help prople
+
+its uniqueness 
+
+its advantages ,  
+
+complete understanding of the problem statement 
+
+identifyoing the root cause to give this problem statement by ministry and solve that first
+
+should be able to satisfy judges and meet their expectation on problem being solved by our idea.
+
+
+website should stay robust and should be available for all.
+
